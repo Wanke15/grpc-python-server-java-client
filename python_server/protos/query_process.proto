@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.queryprocess";
+option java_outer_classname = "QueryProcessProto";
+option objc_class_prefix = "QP";
+
+package queryprocess;
+
+service QueryProcessGrpc {
+   rpc Process(QpRequest) returns (QpResponse) {}
+}
+
+message QpRequest {
+    string query = 1;
+}
+
+message QpResponse {
+    int32 code = 1;
+    Data data = 2;
+    string msg = 3;
+}
+
+message Data {
+    string raw_dsl = 1;
+}
